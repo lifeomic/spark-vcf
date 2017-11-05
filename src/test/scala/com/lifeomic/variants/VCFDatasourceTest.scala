@@ -41,7 +41,7 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(first.getAs[String]("sampleid"), "HG00096")
         Assert.assertEquals(first.getAs[String]("ref"), "TA")
         Assert.assertEquals(count, 307992)
-        Assert.assertEquals(first.getAs[Map[String, String]]("info").size, 12)
+        Assert.assertEquals(first.getAs[Map[String, String]]("info").size, 11)
         Assert.assertEquals(first.getAs[String]("gt"), "0|0")
         Assert.assertEquals(y.schema.fields.length, 12)
     }
