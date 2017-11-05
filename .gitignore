@@ -1,0 +1,17 @@
+.idea
+*.iml
+target
+.classpath
+.project
+.settings
+.DS_Store
+logs
+*.class
+
+*.ipr
+*.iws
+out
+.DS_Store
+metastore_db
+*.log
+spark-warehouse
