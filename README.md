@@ -57,12 +57,10 @@ One more note worth mentioning: while the core of spark-vcf is written as a Spar
 the BGZFEnhancedGzipCodec from Hadoop-BAM for splitting bgzip files, so that Spark can properly partition the files. For example:
 
 ```$scala
-
 val sparkConf = new SparkConf()
         .setAppName("testing")
         .setMaster("local[8]")
         .set("spark.hadoop.io.compression.codecs", "org.seqdoop.hadoop_bam.util.BGZFEnhancedGzipCodec")
-
 ```
 
 # TODO
