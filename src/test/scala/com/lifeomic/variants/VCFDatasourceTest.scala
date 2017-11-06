@@ -2,7 +2,6 @@ package com.lifeomic.variants
 
 import org.junit.{Assert, Test}
 import org.scalatest.junit.AssertionsForJUnit
-import org.apache.spark.sql.functions._
 
 import scala.collection.mutable
 
@@ -36,6 +35,7 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         val y = spark.read
             .format("com.lifeomic.variants")
             .load("src/test/resources/chr2.vcf")
+        y.printSchema()
         val count = y.count()
         val first = y.first()
         Assert.assertEquals(first.getAs[String]("sampleid"), "HG00096")
