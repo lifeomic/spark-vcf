@@ -43,9 +43,17 @@ class DefaultSource extends RelationProvider with SchemaRelationProvider {
 
         val useFormatMap = parameters.get("use.format.map").map(_.toBoolean).getOrElse(false)
         val useFormatTypes = parameters.get("use.format.type").map(_.toBoolean).getOrElse(true)
+        val useAnnotationTypes = parameters.get("use.info.type").map(_.toBoolean).getOrElse(false)
+        val useAnnotationAsMap = if (useAnnotationTypes) false else parameters.get("use.info.map").map(_.toBoolean).getOrElse(true)
 
         path match {
-            case Some(p) => new VCFResourceRelation(sqlContext, p, useFormatTypes=useFormatTypes, useFormatAsMap=useFormatMap)
+            case Some(p) => new VCFResourceRelation(
+                sqlContext, p,
+                useFormatTypes=useFormatTypes,
+                useFormatAsMap=useFormatMap,
+                useAnnotationAsMap=useAnnotationAsMap,
+                useAnnotationTypes= useAnnotationTypes
+            )
             case _ => throw new IllegalArgumentException("Path is required")
         }
     }
