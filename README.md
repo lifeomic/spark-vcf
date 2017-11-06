@@ -65,13 +65,13 @@ val sparkConf = new SparkConf()
 
 ```
 
-#TODO
+# TODO
 * handle different samples across files (high priority)
 * put release in Maven Central
 * More extensive options on the data source
 * Provide performance benchmarks compared to ADAM
 
-#License
+# License
 
 The MIT License
 
