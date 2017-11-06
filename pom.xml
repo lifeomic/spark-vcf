@@ -2,11 +2,31 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>spark-vcf</groupId>
     <artifactId>spark-vcf</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Spark VCF</name>
+    <description>Spark datasource for vcf files</description>
+    <url>https://github.com/lifeomic/spark-vcf</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:lifeomic/spark-vcf.git</connection>
+        <developerConnection>scm:git:git@github.com:lifeomic/spark-vcf.git</developerConnection>
+        <url>scm:git:git@github.com:lifeomic/spark-vcf.git</url>
+        <tag>master</tag>
+    </scm>
 
     <properties>
         <java.version>1.8</java.version>
