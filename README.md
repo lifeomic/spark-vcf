@@ -56,7 +56,7 @@ You can also stringly type the formats as well by setting `use.format.type` to f
 One more note worth mentioning: while the core of spark-vcf is written as a Spark data source, it is still advisable to use 
 the BGZFEnhancedGzipCodec from Hadoop-BAM for splitting bgzip files, so that Spark can properly partition the files. For example:
 
-```$scala
+```scala
 val sparkConf = new SparkConf()
         .setAppName("testing")
         .setMaster("local[8]")
