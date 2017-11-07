@@ -4,6 +4,11 @@ import com.lifeomic.variants.VCFConstants._
 
 object VCFFunctions {
 
+    /**
+      * Returns a meta row of the key, value and number
+      * @param t formatType
+      * @return
+      */
     def metaHandler(t: String) : (String) => (String, (String, String)) = (item: String) => {
         val z = item.replace("<", "").replace(t, "")
         val filtered = z.split(",").filter(item => item.startsWith(ID) || item.startsWith(TYPE) || item.startsWith(NUMBER))
@@ -26,6 +31,15 @@ object VCFFunctions {
         (key, (value, number))
     }
 
+    /**
+      * Extends fields for format and info columns
+      * @param mapFlag should use map or not
+      * @param map parameter map
+      * @param schFields column fields
+      * @param start start index
+      * @param end end index
+      * @return
+      */
     def fieldsExtended(mapFlag: Boolean,
                        map: Map[String, String],
                        schFields: Array[(String, String, String)],
