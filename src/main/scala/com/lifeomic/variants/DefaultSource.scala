@@ -28,17 +28,13 @@ import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.sources.{BaseRelation, RelationProvider, SchemaRelationProvider}
 import org.apache.spark.sql.types.StructType
 
-/**
-  * Default source for spark-vcf.
-  * To use this default source, you will need to register it in spark with spark.read.format("com.lifeomic.variants")
-  */
 class DefaultSource extends RelationProvider with SchemaRelationProvider {
 
     /**
       * Creates relation
       * @param sqlContext spark sql context
       * @param parameters parameters for job
-      * @return
+      * @return Base relation
       */
     override def createRelation(sqlContext: SQLContext, parameters: Map[String, String]): BaseRelation = {
         createRelation(sqlContext, parameters, null)
@@ -49,7 +45,7 @@ class DefaultSource extends RelationProvider with SchemaRelationProvider {
       * @param sqlContext spark sql context
       * @param parameters parameters for job
       * @param schema user defined schema
-      * @return
+      * @return Base relation
       */
     override def createRelation(sqlContext: SQLContext, parameters: Map[String, String], schema: StructType): BaseRelation = {
         createPrivateRelation(sqlContext, parameters)

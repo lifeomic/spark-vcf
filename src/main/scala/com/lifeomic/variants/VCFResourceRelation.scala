@@ -84,7 +84,7 @@ class VCFResourceRelation(
     private var annotationCount = 1
 
 
-    /**
+    /*
       * order is
       * 0. chromosome
       * 1. position
