@@ -83,7 +83,6 @@ class VCFResourceRelation(
     private val annotations = vcf.filter(col(TEXT_VALUE).startsWith("##INFO")).map(_.getString(1)).rdd.map(VCFFunctions.metaHandler("##INFO="))
     private var annotationCount = 1
 
-
     /*
       * order is
       * 0. chromosome
