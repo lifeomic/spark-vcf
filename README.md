@@ -8,7 +8,7 @@ clone or download this repository, then run `mvn package` and use the jar. We ar
 
 Since spark-vcf is written specifically for Spark, it comes with large performance gains over frameworks like ADAM.
 
-#Installation
+# Installation
 
 Spark-vcf can be packaged from source or added as a dependency to your Maven based project.
 
