@@ -8,17 +8,31 @@ clone or download this repository, then run `mvn package` and use the jar. We ar
 
 Since spark-vcf is written specifically for Spark, it comes with large performance gains over frameworks like ADAM.
 
-# Getting Started
+#Installation
+
+Spark-vcf can be packaged from source or added as a dependency to your Maven based project.
 
 To install spark vcf, add the following to your pom:
 
-```
+```xml
 <dependency>
   <groupId>com.lifeomic</groupId>
   <artifactId>spark-vcf</artifactId>
   <version>0.1.0</version>
 </dependency>
 ```
+
+For sbt:
+```
+libraryDependencies += "com.lifeomic" % "spark-vcf" % "0.1.0"
+```
+
+If you are using gradle, the dependency is:
+```
+compile group: 'com.lifeomic', name: 'spark-vcf', version: '0.1.0'
+```
+
+# Getting Started
 
 Getting started with Spark VCF is as simple as:
 
