@@ -30,10 +30,23 @@ import org.apache.spark.sql.types.StructType
 
 class DefaultSource extends RelationProvider with SchemaRelationProvider {
 
+    /**
+      * Creates relation
+      * @param sqlContext spark sql context
+      * @param parameters parameters for job
+      * @return Base relation
+      */
     override def createRelation(sqlContext: SQLContext, parameters: Map[String, String]): BaseRelation = {
         createRelation(sqlContext, parameters, null)
     }
 
+    /**
+      * Creates relation with user schema
+      * @param sqlContext spark sql context
+      * @param parameters parameters for job
+      * @param schema user defined schema
+      * @return Base relation
+      */
     override def createRelation(sqlContext: SQLContext, parameters: Map[String, String], schema: StructType): BaseRelation = {
         createPrivateRelation(sqlContext, parameters)
     }

@@ -32,7 +32,15 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 import com.lifeomic.variants.VCFConstants._
 
-
+/**
+  * Spark vcf resource relation
+  * @param sqlContext Spark sql context
+  * @param path path of vcf file(s)
+  * @param useFormatTypes Type checking for formats, plus casting types
+  * @param useFormatAsMap Use the format column as a map
+  * @param useAnnotationTypes Type casting for info fields
+  * @param useAnnotationAsMap use annotations as a map
+  */
 class VCFResourceRelation(
                              override val sqlContext: SQLContext,
                              path: String,
@@ -75,8 +83,7 @@ class VCFResourceRelation(
     private val annotations = vcf.filter(col(TEXT_VALUE).startsWith("##INFO")).map(_.getString(1)).rdd.map(VCFFunctions.metaHandler("##INFO="))
     private var annotationCount = 1
 
-
-    /**
+    /*
       * order is
       * 0. chromosome
       * 1. position
@@ -93,6 +100,10 @@ class VCFResourceRelation(
       */
     override val schema: StructType = inferSchema()
 
+    /**
+      * Runs the vcf queries and converts them to an rdd of rows
+      * @return rdd of a spark sql row
+      */
     override def buildScan(): RDD[Row] = {
         val schFields = schema.fields.map(item => (item.name, item.dataType.typeName, item.dataType.sql.toLowerCase))
         val annotateCount = annotationCount
