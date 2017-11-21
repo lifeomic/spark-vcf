@@ -146,6 +146,7 @@ class VCFResourceRelation(
                             val format = split(8)
                             val splitFormat = format.split(":")
                             val altSplit = alternate.split(",")
+                            val mapper = headerMapBroadcast.value
                             altSplit.flatMap(altS => {
                                 List.range(9, split.length).map(i => {
                                     val sampleValues = split(i).split(":")
@@ -155,7 +156,7 @@ class VCFResourceRelation(
                                         useFormatAsMap, formatMap, schFields, 9+ annotateCount,schFields.length - 1
                                     )
                                     val updateFields = Array(chromosome, position, startpoint, endpoint, id, reference, altS, qual, filter)
-                                    Row.fromSeq(updateFields ++ annotationsExtended ++ extend ++ Array(headerMapBroadcast.value(fname)(i)))
+                                    Row.fromSeq(updateFields ++ annotationsExtended ++ extend ++ Array(mapper(fname)(i)))
                                 })
                             }).toSeq
                         } else {
