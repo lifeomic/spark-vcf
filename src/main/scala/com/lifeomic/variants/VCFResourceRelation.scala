@@ -66,6 +66,8 @@ class VCFResourceRelation(
         .map(item => (item.getString(0), item.getString(1).split("\t")))
         .toMap
 
+    private val headerMapBroadcast = sqlContext.sparkContext.broadcast(headerMap)
+
     private val values = quickLoad.filter(!col(TEXT_VALUE).startsWith("#")).rdd.map(item => (item.getString(0), item.getString(1)))
 
     private val structHandler = (item: (String, (String, String))) => {
@@ -153,7 +155,7 @@ class VCFResourceRelation(
                                         useFormatAsMap, formatMap, schFields, 9+ annotateCount,schFields.length - 1
                                     )
                                     val updateFields = Array(chromosome, position, startpoint, endpoint, id, reference, altS, qual, filter)
-                                    Row.fromSeq(updateFields ++ annotationsExtended ++ extend ++ Array(headerMap(fname)(i)))
+                                    Row.fromSeq(updateFields ++ annotationsExtended ++ extend ++ Array(headerMapBroadcast.value(fname)(i)))
                                 })
                             }).toSeq
                         } else {

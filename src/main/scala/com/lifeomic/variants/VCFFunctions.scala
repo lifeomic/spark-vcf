@@ -51,10 +51,20 @@ object VCFFunctions {
                 .map(item => {
                     val (key, value, sq) = item
                     sq match {
-                        case "int" => map.get(key).map(_.toInt).getOrElse(null)
-                        case "array<int>" => map.get(key).map(item => item.split(",").map(_.toInt)).getOrElse(null)
-                        case "float" => map.get(key).map(_.toFloat).getOrElse(null)
-                        case "array<float>" => map.get(key).map(item => item.split(",").map(_.toFloat)).getOrElse(null)
+                        case "int" => map.get(key)
+                            .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).intValue() else 0)
+                            .getOrElse(null)
+                        case "array<int>" => map.get(key)
+                            .map(item => item.split(",")
+                                .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).intValue() else 0))
+                            .getOrElse(null)
+                        case "float" => map.get(key)
+                            .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).floatValue() else 0f)
+                            .getOrElse(null)
+                        case "array<float>" => map.get(key)
+                            .map(item => item.split(",")
+                                .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).floatValue() else 0f))
+                            .getOrElse(null)
                         case _ => map.getOrElse(key, null)
                     }
                 })

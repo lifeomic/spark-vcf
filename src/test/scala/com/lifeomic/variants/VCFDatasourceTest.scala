@@ -98,4 +98,18 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(first.getAs[String]("gt"), "0|0")
     }
 
+    @Test
+    def testDecimals(): Unit = {
+        val y = spark.read
+            .format("com.lifeomic.variants")
+            .option("use.info.type", "true")
+            .load("src/test/resources/small.vcf")
+        val first = y.first()
+        Assert.assertEquals(first.getString(0), "chr1")
+        Assert.assertEquals(first.getLong(1), 3348577)
+        Assert.assertEquals(first.getString(5), "C")
+        Assert.assertEquals(first.getString(6), "T")
+
+    }
+
 }
