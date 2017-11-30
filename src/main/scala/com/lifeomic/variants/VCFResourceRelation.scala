@@ -57,9 +57,8 @@ class VCFResourceRelation(
         .read
         .text(path)
         .select(input_file_name.as(FILE_NAME), col(VALUE).as(TEXT_VALUE))
-        .cache()
 
-    private val quickLoad = vcf.filter(!col(TEXT_VALUE).startsWith("##")).cache()
+    private val quickLoad = vcf.filter(!col(TEXT_VALUE).startsWith("##"))
 
     private val headerMap = quickLoad.filter(col(TEXT_VALUE).startsWith("#"))
         .collect()
