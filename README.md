@@ -18,7 +18,7 @@ To install spark vcf, add the following to your pom:
 <dependency>
   <groupId>com.lifeomic</groupId>
   <artifactId>spark-vcf</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 
