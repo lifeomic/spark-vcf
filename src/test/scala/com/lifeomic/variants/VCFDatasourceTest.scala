@@ -135,12 +135,27 @@ class VCFDatasourceTest extends AssertionsForJUnit {
             .load("src/test/resources/site.vcf")
         val cc = y.collect()
         val first = cc.head
+        Assert.assertEquals(first.getAs[String]("chrom"), "20")
+        Assert.assertEquals(first.getAs[Long]("pos"), 14370L)
+        Assert.assertEquals(first.getAs[String]("ref"), "G")
+        Assert.assertEquals(first.getAs[String]("alt"), "A")
         Assert.assertEquals(first.getAs[String]("info_aa"), null)
         Assert.assertEquals(first.getAs[Integer]("info_dp"), 14)
         Assert.assertEquals(first.getAs[Integer]("info_ns"), 3)
         Assert.assertTrue(first.getAs[mutable.WrappedArray[Float]]("info_af")(0) == 0.5f)
         Assert.assertEquals(first.getAs[String]("info_h2"), "H2")
         Assert.assertEquals(first.getAs[String]("info_db"), "DB")
+        Assert.assertEquals(first.getAs[Int]("dp"), 1)
+        Assert.assertEquals(first.getAs[mutable.WrappedArray[Int]]("hq")(0), 51)
+        Assert.assertEquals(first.getAs[Int]("gq"), 48)
+        Assert.assertEquals(first.getAs[String]("gt"), "0|0")
+        Assert.assertEquals(first.getAs[String]("sampleid"), "NA00001")
+
+        val second = cc(1)
+        Assert.assertEquals(second.getAs[String]("sampleid"), "NA00002")
+
+        val third = cc(2)
+        Assert.assertEquals(third.getAs[String]("sampleid"), "NA00003")
     }
 
 }
