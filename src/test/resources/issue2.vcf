@@ -1,0 +1,11 @@
+##fileformat=VCFv4.2
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=DB,Number=0,Type=Flag,Description="dbSNP Membership">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total depth of called genotypes">
+##INFO=<ID=MAJ,Number=1,Type=String,Description="Major allele is REF or ALT">
+##contig=<ID=MT,length=16569>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+1	10109	rs376007522	A	T	22940.40	.	AC=86;AN=176;AF=0.4886;DP=17307;MAJ=REF;DB
+1	10150	rs371194064	C	T	2276.70	.	AC=31;AN=176;AF=0.1761;DP=15279;MAJ=REF;DB
