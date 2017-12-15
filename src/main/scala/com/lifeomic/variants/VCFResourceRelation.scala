@@ -69,15 +69,19 @@ class VCFResourceRelation(
 
     private val values = quickLoad.filter(!col(TEXT_VALUE).startsWith("#")).rdd.map(item => (item.getString(0), item.getString(1)))
 
-    private val structHandler = (item: (String, (String, String))) => {
-        val (key, value) = item
-        val (v, number) = value
-        val dType = v match {
-            case "Float" => if (number != "1") ArrayType(FloatType) else FloatType
-            case "Integer" => if (number != "1") ArrayType(IntegerType) else IntegerType
-            case _ => StringType
+    private val structHandler = (prefix: String) => {
+        (item: (String, (String, String))) => {
+            val (key, value) = item
+            val (v, number) = value
+            val condition = number != null && (number.equals("0") || number.equals("1"))
+            val dType = v match {
+                case "Float" => if (condition) FloatType else ArrayType(FloatType)
+                case "Integer" => if (condition) IntegerType else ArrayType(IntegerType)
+                case _ => StringType
+            }
+            StructField(prefix + key.toLowerCase(), dType)
+
         }
-        StructField(key.toLowerCase(), dType)
     }
 
     private val formats = vcf.filter(col(TEXT_VALUE).startsWith("##FORMAT")).map(_.getString(1)).rdd.map(VCFFunctions.metaHandler("##FORMAT="))
@@ -129,7 +133,9 @@ class VCFResourceRelation(
                             val splitCols = split(7).split(";")
                             splitCols.map(item => {
                                 val keyValue = item.split("=")
-                                if (keyValue.length < 2) {
+                                if (keyValue.length < 2 && keyValue.length > 0) {
+                                    (keyValue(0).toLowerCase, keyValue(0))
+                                } else if (keyValue.length < 1) {
                                     null
                                 } else {
                                     (keyValue(0).toLowerCase, keyValue(1))
@@ -148,7 +154,13 @@ class VCFResourceRelation(
                             val mapper = headerMapBroadcast.value
                             altSplit.flatMap(altS => {
                                 List.range(9, split.length).map(i => {
-                                    val sampleValues = split(i).split(":")
+                                    val sampleValues = {
+                                        val initial = split(i).split(":")
+                                        if (initial.length < splitFormat.length){
+                                            val diff = splitFormat.length - initial.length
+                                            initial ++ Array.fill(diff)(".")
+                                        } else initial
+                                    }
                                     val rangeValues = List.range(0, splitFormat.length)
                                     val formatMap = rangeValues.map(v => (splitFormat(v).toLowerCase(), sampleValues(v))).toMap
                                     val extend = VCFFunctions.fieldsExtended(
@@ -189,7 +201,7 @@ class VCFResourceRelation(
             Seq(StructField(columnName.toLowerCase, MapType(StringType, StringType)))
         } else if (useTypes) {
             val collectedFormats = rdd.collectAsMap()
-            collectedFormats.map(structHandler).toSeq
+            collectedFormats.map(structHandler(prefix)).toSeq
         } else {
             val first = values.first()._2.split("\t")(8)
             val joined = first.split(":")
@@ -213,12 +225,14 @@ class VCFResourceRelation(
                 )
             }
             else if (i == 7){
-                val toRet = formatOptionFields(firstHeader(i).toLowerCase, annotations, useAnnotationAsMap, useAnnotationTypes)
+                val toRet = formatOptionFields(
+                    firstHeader(i).toLowerCase, annotations, useAnnotationAsMap, useAnnotationTypes, "info_"
+                )
                 annotationCount = toRet.size
                 toRet
             }
             else if (i == 8) {
-                formatOptionFields(firstHeader(i).toLowerCase, formats, useFormatAsMap, useFormatTypes)
+                formatOptionFields(firstHeader(i).toLowerCase, formats, useFormatAsMap, useFormatTypes, "")
             }
             else if (i == 9){
                 Seq(StructField("sampleid", StringType))

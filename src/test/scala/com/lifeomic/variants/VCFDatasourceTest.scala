@@ -23,7 +23,7 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(first.getAs[Long]("pos"), 13273)
         Assert.assertEquals(first.getAs[String]("id"), "rs531730856")
         val annotations = first.getAs[Map[String, String]]("info")
-        Assert.assertEquals(annotations.size, 28)
+        Assert.assertEquals(annotations.size, 36)
         Assert.assertEquals(annotations("dbsnp_caf"), "0.905,0.09505")
         Assert.assertEquals(first.getAs[mutable.WrappedArray[Integer]]("ad").length, 2)
         Assert.assertEquals(first.getAs[mutable.WrappedArray[Integer]]("sac").length, 4)
@@ -41,7 +41,7 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(first.getAs[String]("sampleid"), "HG00096")
         Assert.assertEquals(first.getAs[String]("ref"), "TA")
         Assert.assertEquals(count, 307992)
-        Assert.assertEquals(first.getAs[Map[String, String]]("info").size, 11)
+        Assert.assertEquals(first.getAs[Map[String, String]]("info").size, 13)
         Assert.assertEquals(first.getAs[String]("gt"), "0|0")
         Assert.assertEquals(y.schema.fields.length, 12)
     }
@@ -93,8 +93,8 @@ class VCFDatasourceTest extends AssertionsForJUnit {
             .load("src/test/resources/correct/chr2.vcf")
         val x = y.collect()
         val first = x.head
-        Assert.assertEquals(first.getAs[String]("ssid"), "ss1368084858")
-        Assert.assertEquals(first.getAs[Integer]("ns"), 2504)
+        Assert.assertEquals(first.getAs[String]("info_ssid"), "ss1368084858")
+        Assert.assertEquals(first.getAs[Integer]("info_ns"), 2504)
         Assert.assertEquals(first.getAs[String]("gt"), "0|0")
     }
 
@@ -109,6 +109,38 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(first.getLong(1), 3348577)
         Assert.assertEquals(first.getString(5), "C")
         Assert.assertEquals(first.getString(6), "T")
+    }
+
+    @Test
+    def verifyItWorksInfoTypes() : Unit = {
+        val y = spark.read
+            .format("com.lifeomic.variants")
+            .option("use.info.type", "true")
+            .load("src/test/resources/issue2.vcf")
+        val cc = y.collect()
+        val first = cc.head
+        Assert.assertEquals(first.getAs[mutable.WrappedArray[Integer]]("info_ac")(0), 86)
+        Assert.assertTrue(first.getAs[mutable.WrappedArray[Float]]("info_af")(0) == 0.4886f)
+        Assert.assertEquals(first.getAs[Integer]("info_an"), 176)
+        Assert.assertEquals(first.getAs[String]("info_db"), "DB")
+        Assert.assertEquals(first.getAs[Integer]("info_dp"), 17307)
+        Assert.assertEquals(first.getAs[String]("info_maj"), "REF")
+    }
+
+    @Test
+    def testWebsiteChange() : Unit = {
+        val y = spark.read
+            .format("com.lifeomic.variants")
+            .option("use.info.type", "true")
+            .load("src/test/resources/site.vcf")
+        val cc = y.collect()
+        val first = cc.head
+        Assert.assertEquals(first.getAs[String]("info_aa"), null)
+        Assert.assertEquals(first.getAs[Integer]("info_dp"), 14)
+        Assert.assertEquals(first.getAs[Integer]("info_ns"), 3)
+        Assert.assertTrue(first.getAs[mutable.WrappedArray[Float]]("info_af")(0) == 0.5f)
+        Assert.assertEquals(first.getAs[String]("info_h2"), "H2")
+        Assert.assertEquals(first.getAs[String]("info_db"), "DB")
     }
 
 }

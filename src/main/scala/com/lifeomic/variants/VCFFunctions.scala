@@ -47,27 +47,42 @@ object VCFFunctions {
         if (mapFlag) {
             Array(map)
         } else {
-            schFields.slice(start, end)
+            val integerHandler = (x: String) => {
+                if (x != null && !x.equals(".") && x.forall(_.isDigit)) x.toInt
+                else if (x != null && !x.equals(".") && !x.isEmpty) java.lang.Double.valueOf(x).intValue()
+                else 0
+            }
+            val floatHandler = (x: String) => {
+                val tmp = x.replace(".", "")
+                if (x != null && !x.equals(".") && tmp.forall(_.isDigit)) x.toFloat
+                else if (x != null && !x.equals(".") && !x.isEmpty) java.lang.Double.valueOf(x).floatValue()
+                else 0f
+            }
+
+            val z = schFields.slice(start, end)
                 .map(item => {
-                    val (key, value, sq) = item
+                    val (k, value, sq) = item
+                    val key = k.replace("info_", "").replace("format_", "")
+
                     sq match {
                         case "int" => map.get(key)
-                            .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).intValue() else 0)
+                            .map(integerHandler)
                             .getOrElse(null)
                         case "array<int>" => map.get(key)
                             .map(item => item.split(",")
-                                .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).intValue() else 0))
+                                .map(integerHandler))
                             .getOrElse(null)
                         case "float" => map.get(key)
-                            .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).floatValue() else 0f)
+                            .map(floatHandler)
                             .getOrElse(null)
                         case "array<float>" => map.get(key)
                             .map(item => item.split(",")
-                                .map(x => if (x != null && x.forall(_.isDigit)) java.lang.Double.valueOf(x).floatValue() else 0f))
+                                .map(floatHandler))
                             .getOrElse(null)
                         case _ => map.getOrElse(key, null)
                     }
                 })
+            z
         }
     }
 
