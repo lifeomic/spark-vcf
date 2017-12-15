@@ -1,12 +1,12 @@
 # spark-vcf
-Spark VCF data source implementation in native spark without Hadoop-bam.
+Spark VCF data source implementation in native spark.
 
 # Introduction
 
 Spark VCF allows you to natively load VCFs into an Apache Spark Dataframe/Dataset. To get started with Spark-VCF, you can 
 clone or download this repository, then run `mvn package` and use the jar. We are also now in Maven central.
 
-Since spark-vcf is written specifically for Spark, which offers additional performance gains.
+Since spark-vcf is written specifically for Spark, there is less overhead and performance gains in many areas.
 
 # Installation
 
@@ -18,18 +18,18 @@ To install spark vcf, add the following to your pom:
 <dependency>
   <groupId>com.lifeomic</groupId>
   <artifactId>spark-vcf</artifactId>
-  <version>0.2.1</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 For sbt:
 ```
-libraryDependencies += "com.lifeomic" % "spark-vcf" % "0.2.1"
+libraryDependencies += "com.lifeomic" % "spark-vcf" % "0.3.0"
 ```
 
 If you are using gradle, the dependency is:
 ```
-compile group: 'com.lifeomic', name: 'spark-vcf', version: '0.2.1'
+compile group: 'com.lifeomic', name: 'spark-vcf', version: '0.3.0'
 ```
 
 # Getting Started
