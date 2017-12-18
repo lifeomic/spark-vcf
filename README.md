@@ -1,14 +1,15 @@
 # spark-vcf
+
 Spark VCF data source implementation in native spark.
 
-# Introduction
+## Introduction
 
 Spark VCF allows you to natively load VCFs into an Apache Spark Dataframe/Dataset. To get started with Spark-VCF, you can 
 clone or download this repository, then run `mvn package` and use the jar. We are also now in Maven central.
 
 Since spark-vcf is written specifically for Spark, there is less overhead and performance gains in many areas.
 
-# Installation
+## Installation
 
 Spark-vcf can be packaged from source or added as a dependency to your Maven based project.
 
@@ -32,7 +33,7 @@ If you are using gradle, the dependency is:
 compile group: 'com.lifeomic', name: 'spark-vcf', version: '0.3.0'
 ```
 
-# Getting Started
+## Getting Started
 
 Getting started with Spark VCF is as simple as:
 
@@ -81,24 +82,15 @@ the BGZFEnhancedGzipCodec from Hadoop-BAM for splitting bgzip files, so that Spa
 
 ```scala
 val sparkConf = new SparkConf()
-        .setAppName("testing")
-        .setMaster("local[8]")
-        .set("spark.hadoop.io.compression.codecs", "org.seqdoop.hadoop_bam.util.BGZFEnhancedGzipCodec")
+    .setAppName("testing")
+    .setMaster("local[8]")
+    .set("spark.hadoop.io.compression.codecs", "org.seqdoop.hadoop_bam.util.BGZFEnhancedGzipCodec")
 ```
 
-# TODO
+## TODO
+
 * Provide performance benchmarks compared to other libraries
-* Get Travis CI set up
 
-# License
+## License
 
-The MIT License
-
-Copyright 2017 Lifeomic
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+[The MIT License](LICENSE)
