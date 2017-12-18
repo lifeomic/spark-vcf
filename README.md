@@ -2,9 +2,11 @@
 
 Spark VCF data source implementation in native spark.
 
+[![Build Status](https://travis-ci.org/lifeomic/spark-vcf.svg?branch=master)](https://travis-ci.org/lifeomic/spark-vcf)
+
 ## Introduction
 
-Spark VCF allows you to natively load VCFs into an Apache Spark Dataframe/Dataset. To get started with Spark-VCF, you can 
+Spark VCF allows you to natively load VCFs into an Apache Spark Dataframe/Dataset. To get started with Spark-VCF, you can
 clone or download this repository, then run `mvn package` and use the jar. We are also now in Maven central.
 
 Since spark-vcf is written specifically for Spark, there is less overhead and performance gains in many areas.
@@ -43,7 +45,7 @@ val myVcf = spark.read
     .load("src/test/resources/example.vcf")
 ```
 
-The schema contains the standard vcf columns and has the options to expand INFO and/or FORMAT columns. An example schema 
+The schema contains the standard vcf columns and has the options to expand INFO and/or FORMAT columns. An example schema
 from 1000 genomes is shown below:
 
 ```
@@ -64,8 +66,8 @@ from 1000 genomes is shown below:
 
 ```
 
-There are options that you can use as well for the `Format` and `Info` columns. To return the format fields as a map, 
-instead of separate fields, you can set the `use.format.map` variable to `true`. This can be used to speed up the spark 
+There are options that you can use as well for the `Format` and `Info` columns. To return the format fields as a map,
+instead of separate fields, you can set the `use.format.map` variable to `true`. This can be used to speed up the spark
 job even more, as it doesn't have to read the header file for type and column information.
 
 ```scala
@@ -77,7 +79,7 @@ val mappedFormat = spark.read
 
 You can also stringly type the formats as well by setting `use.format.type` to false.
 
-One more note worth mentioning: while the core of spark-vcf is written as a Spark data source, it is still advisable to use 
+One more note worth mentioning: while the core of spark-vcf is written as a Spark data source, it is still advisable to use
 the BGZFEnhancedGzipCodec from Hadoop-BAM for splitting bgzip files, so that Spark can properly partition the files. For example:
 
 ```scala
