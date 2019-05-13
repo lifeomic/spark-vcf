@@ -61,8 +61,8 @@ class VCFResourceRelation(
     private val quickLoad = vcf.filter(!col(TEXT_VALUE).startsWith("##"))
 
     private val headerMap = quickLoad.filter(col(TEXT_VALUE).startsWith("#"))
-        .collect()
         .map(item => (item.getString(0), item.getString(1).split("\t")))
+        .collect()
         .toMap
 
     private val headerMapBroadcast = sqlContext.sparkContext.broadcast(headerMap)
