@@ -2,6 +2,8 @@ package com.lifeomic.variants
 
 import com.lifeomic.variants.VCFConstants._
 
+import scala.util.{Failure, Success, Try}
+
 object VCFFunctions {
 
     /**
@@ -31,6 +33,13 @@ object VCFFunctions {
         (key, (value, number))
     }
 
+    def conversionHandler[T](x: String, defaultValue: T, conversionFunc: String => T): T = {
+        Try(conversionFunc(x)) match {
+            case Success(s) => s
+            case Failure(_) => defaultValue
+        }
+    }
+
     /**
       * Extends fields for format and info columns
       * @param mapFlag should use map or not
@@ -49,13 +58,13 @@ object VCFFunctions {
         } else {
             val integerHandler = (x: String) => {
                 if (x != null && !x.equals(".") && x.forall(_.isDigit)) x.toInt
-                else if (x != null && !x.equals(".") && !x.isEmpty) java.lang.Double.valueOf(x).intValue()
+                else if (x != null && !x.equals(".") && !x.isEmpty) conversionHandler(x, 0, x => java.lang.Double.valueOf(x).intValue())
                 else 0
             }
             val floatHandler = (x: String) => {
                 val tmp = x.replace(".", "")
                 if (x != null && !x.equals(".") && tmp.forall(_.isDigit)) x.toFloat
-                else if (x != null && !x.equals(".") && !x.isEmpty) java.lang.Double.valueOf(x).floatValue()
+                else if (x != null && !x.equals(".") && !x.isEmpty) conversionHandler(x, 0f, x => java.lang.Double.valueOf(x).floatValue())
                 else 0f
             }
 
