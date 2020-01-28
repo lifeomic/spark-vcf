@@ -1,0 +1,263 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=alt_allele_in_normal,Description="Evidence seen in the normal sample">
+##FILTER=<ID=clustered_events,Description="Clustered events observed in the tumor">
+##FILTER=<ID=germline_risk,Description="Evidence indicates this site is germline, not somatic">
+##FILTER=<ID=homologous_mapping_event,Description="More than three events were observed in the tumor">
+##FILTER=<ID=multi_event_alt_allele_in_normal,Description="Multiple events observed in tumor and normal">
+##FILTER=<ID=panel_of_normals,Description="Seen in at least 2 samples in the panel of normals">
+##FILTER=<ID=str_contraction,Description="Site filtered due to contraction of short tandem repeat region">
+##FILTER=<ID=t_lod_fstar,Description="Tumor does not meet likelihood threshold">
+##FILTER=<ID=triallelic_site,Description="Site filtered because more than two alt alleles pass tumor LOD">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=AF,Number=1,Type=Float,Description="Allele fraction of the event in the tumor">
+##FORMAT=<ID=ALT_F1R2,Number=1,Type=Integer,Description="Count of reads in F1R2 pair orientation supporting the alternate allele">
+##FORMAT=<ID=ALT_F2R1,Number=1,Type=Integer,Description="Count of reads in F2R1 pair orientation supporting the alternate allele">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##FORMAT=<ID=FOXOG,Number=1,Type=Float,Description="Fraction of alt reads indicating OxoG error">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=QSS,Number=A,Type=Integer,Description="Sum of base quality scores for each allele">
+##FORMAT=<ID=REF_F1R2,Number=1,Type=Integer,Description="Count of reads in F1R2 pair orientation supporting the reference allele">
+##FORMAT=<ID=REF_F2R1,Number=1,Type=Integer,Description="Count of reads in F2R1 pair orientation supporting the reference allele">
+##GATKCommandLine.MuTect2=<ID=MuTect2,Version=3.6-0-g89b7209,Date="Sun Jul 17 22:53:06 PDT 2016",Epoch=1468821186688,CommandLineOptions="analysis_type=MuTect2 input_file=[/scratch/tmp/kmavrommatis/GATK.Mutect2/GATK.Mutect2/77187/SeqData/WES/ProcessedData/MMRF/GATK.Recalibrate_1468038545/MMRF_1016_1_PB_WBC_C3_KBS5U_L03007.MarkDuplicates.mdup..GATK.Recalibrate.bam, /scratch/tmp/kmavrommatis/GATK.Mutect2/GATK.Mutect2/77187/SeqData/WES/ProcessedData/MMRF/GATK.Recalibrate_1468038545/MMRF_1016_1_BM_CD138pos_T1_KBS5U_L02999.MarkDuplicates.mdup..GATK.Recalibrate.bam] showFullBamList=false read_buffer_size=null read_filter=[] disable_read_filter=[] intervals=null excludeIntervals=null interval_set_rule=UNION interval_merging=ALL interval_padding=0 reference_sequence=/celgene/reference/genomes/Homo-sapiens/GRCh37.p12/WholeGenome/genome.fa nonDeterministicRandomSeed=false disableDithering=false maxRuntime=-1 maxRuntimeUnits=MINUTES downsampling_type=BY_SAMPLE downsample_to_fraction=null downsample_to_coverage=1000 baq=OFF baqGapOpenPenalty=40.0 refactor_NDN_cigar_string=false fix_misencoded_quality_scores=false allow_potentially_misencoded_quality_scores=false useOriginalQualities=false defaultBaseQualities=-1 performanceLog=null BQSR=null quantize_quals=0 static_quantized_quals=null round_down_quantized=false disable_indel_quals=false emit_original_quals=false preserve_qscores_less_than=6 globalQScorePrior=-1.0 validation_strictness=SILENT remove_program_records=false keep_program_records=false sample_rename_mapping_file=null unsafe=null disable_auto_index_creation_and_locking_when_reading_rods=false no_cmdline_in_header=false sites_only=false never_trim_vcf_format_field=false bcf=false bam_compression=null simplifyBAM=false disable_bam_indexing=false generate_md5=false num_threads=1 num_cpu_threads_per_data_thread=8 num_io_threads=0 monitorThreadEfficiency=false num_bam_file_handles=null read_group_black_list=null pedigree=[] pedigreeString=[] pedigreeValidationType=STRICT allow_intervals_with_unindexed_bam=false generateShadowBCF=false variant_index_type=DYNAMIC_SEEK variant_index_parameter=-1 reference_window_stop=0 phone_home= gatk_key=null tag=NA logging_level=INFO log_to_file=null help=false version=false m2debug=false artifact_detection_mode=false initial_tumor_lod=4.0 initial_normal_lod=0.5 tumor_lod=6.3 normal_lod=2.2 dbsnp_normal_lod=5.5 max_alt_alleles_in_normal_count=1 max_alt_alleles_in_normal_qscore_sum=20 max_alt_allele_in_normal_fraction=0.03 debug=false useFilteredReadsForAnnotations=false emitRefConfidence=NONE bamOutput=null bamWriterType=CALLED_HAPLOTYPES emitDroppedReads=false disableOptimizations=false annotateNDA=false heterozygosity=0.001 indel_heterozygosity=1.25E-4 standard_min_confidence_threshold_for_calling=30.0 standard_min_confidence_threshold_for_emitting=30.0 max_alternate_alleles=6 max_num_PL_values=100 input_prior=[] sample_ploidy=2 genotyping_mode=DISCOVERY alleles=(RodBinding name= source=UNBOUND) contamination_fraction_to_filter=0.0 contamination_fraction_per_sample_file=null p_nonref_model=null exactcallslog=null output_mode=EMIT_VARIANTS_ONLY allSitePLs=false kmerSize=[10, 25] dontIncreaseKmerSizesForCycles=false allowNonUniqueKmersInRef=false numPruningSamples=1 recoverDanglingHeads=false doNotRecoverDanglingBranches=false minDanglingBranchLength=4 consensus=false maxNumHaplotypesInPopulation=128 errorCorrectKmers=false minPruning=2 debugGraphTransformations=false allowCyclesInKmerGraphToGeneratePaths=false graphOutput=null kmerLengthForReadErrorCorrection=25 minObservationsForKmerToBeSolid=20 gcpHMM=10 pair_hmm_implementation=VECTOR_LOGLESS_CACHING pair_hmm_sub_implementation=ENABLE_ALL always_load_vector_logless_PairHMM_lib=false phredScaledGlobalReadMismappingRate=45 noFpga=false debug_read_name=null MQ_filtering_level=20 cosmic=[(RodBinding name=cosmic source=/celgene/reference/genomes/Homo-sapiens/GRCh37.p12/Variants/CosmicCodingVariants_v71.celgene.vcf)] normal_panel=[] dbsnp=(RodBinding name=dbsnp source=/celgene/reference/genomes/Homo-sapiens/GRCh37.p12/Variants/dbSNP.v144.celgene.vcf) comp=[] annotation=[DepthPerAlleleBySample, BaseQualitySumPerAlleleBySample, TandemRepeatAnnotator, OxoGReadCounts] excludeAnnotation=[SpanningDeletions] out=/scratch/tmp/kmavrommatis/GATK.Mutect2/GATK.Mutect2/77187/SeqData/WES/ProcessedData/MMRF/GATK.Mutect2_1468818637/MMRF_1016_1_BM_CD138pos_T1_KBS5U_L02999.MarkDuplicates.mdup...vcf dontTrimActiveRegions=false maxDiscARExtension=25 maxGGAARExtension=300 paddingAroundIndels=150 paddingAroundSNPs=20 keepRG=null min_base_quality_score=10 errorCorrectReads=false captureAssemblyFailureBAM=false dontUseSoftClippedBases=true justDetermineActiveRegions=false doNotRunPhysicalPhasing=false activityProfileOut=null activeRegionOut=null activeRegionIn=null activeRegionExtension=null forceActive=false activeRegionMaxSize=null bandPassSigma=null maxProbPropagationDistance=50 activeProbabilityThreshold=0.002 filter_reads_with_N_cigar=false filter_mismatching_base_and_quals=false filter_bases_not_stored=false">
+##INFO=<ID=DB,Number=0,Type=Flag,Description="dbSNP Membership">
+##INFO=<ID=ECNT,Number=1,Type=String,Description="Number of events in this haplotype">
+##INFO=<ID=HCNT,Number=1,Type=String,Description="Number of haplotypes that support this variant">
+##INFO=<ID=MAX_ED,Number=1,Type=Integer,Description="Maximum distance between events in this active region">
+##INFO=<ID=MIN_ED,Number=1,Type=Integer,Description="Minimum distance between events in this active region">
+##INFO=<ID=NLOD,Number=1,Type=String,Description="Normal LOD score">
+##INFO=<ID=PON,Number=1,Type=String,Description="Count from Panel of Normals">
+##INFO=<ID=RPA,Number=.,Type=Integer,Description="Number of times tandem repeat unit is repeated, for each allele (including reference)">
+##INFO=<ID=RU,Number=1,Type=String,Description="Tandem repeat unit (bases)">
+##INFO=<ID=STR,Number=0,Type=Flag,Description="Variant is a short tandem repeat">
+##INFO=<ID=TLOD,Number=1,Type=String,Description="Tumor LOD score">
+##SAMPLE=<ID=NORMAL,SampleName=MMRF_1016_1_PB_WBC_C3_KBS5U_L03007,File=/scratch/tmp/kmavrommatis/GATK.Mutect2/GATK.Mutect2/77187/SeqData/WES/ProcessedData/MMRF/GATK.Recalibrate_1468038545/MMRF_1016_1_PB_WBC_C3_KBS5U_L03007.MarkDuplicates.mdup..GATK.Recalibrate.bam>
+##SAMPLE=<ID=TUMOR,SampleName=MMRF_1016_1_BM_CD138pos_T1_KBS5U_L02999,File=/scratch/tmp/kmavrommatis/GATK.Mutect2/GATK.Mutect2/77187/SeqData/WES/ProcessedData/MMRF/GATK.Recalibrate_1468038545/MMRF_1016_1_BM_CD138pos_T1_KBS5U_L02999.MarkDuplicates.mdup..GATK.Recalibrate.bam>
+##contig=<ID=chrM,length=16569>
+##contig=<ID=chr1,length=249250621>
+##contig=<ID=chr2,length=243199373>
+##contig=<ID=chr3,length=198022430>
+##contig=<ID=chr4,length=191154276>
+##contig=<ID=chr5,length=180915260>
+##contig=<ID=chr6,length=171115067>
+##contig=<ID=chr7,length=159138663>
+##contig=<ID=chr8,length=146364022>
+##contig=<ID=chr9,length=141213431>
+##contig=<ID=chr10,length=135534747>
+##contig=<ID=chr11,length=135006516>
+##contig=<ID=chr12,length=133851895>
+##contig=<ID=chr13,length=115169878>
+##contig=<ID=chr14,length=107349540>
+##contig=<ID=chr15,length=102531392>
+##contig=<ID=chr16,length=90354753>
+##contig=<ID=chr17,length=81195210>
+##contig=<ID=chr18,length=78077248>
+##contig=<ID=chr19,length=59128983>
+##contig=<ID=chr20,length=63025520>
+##contig=<ID=chr21,length=48129895>
+##contig=<ID=chr22,length=51304566>
+##contig=<ID=chrX,length=155270560>
+##contig=<ID=chrY,length=59373566>
+##contig=<ID=GL000191.1,length=106433>
+##contig=<ID=GL000192.1,length=547496>
+##contig=<ID=GL000193.1,length=189789>
+##contig=<ID=GL000194.1,length=191469>
+##contig=<ID=GL000195.1,length=182896>
+##contig=<ID=GL000196.1,length=38914>
+##contig=<ID=GL000197.1,length=37175>
+##contig=<ID=GL000198.1,length=90085>
+##contig=<ID=GL000199.1,length=169874>
+##contig=<ID=GL000200.1,length=187035>
+##contig=<ID=GL000201.1,length=36148>
+##contig=<ID=GL000202.1,length=40103>
+##contig=<ID=GL000203.1,length=37498>
+##contig=<ID=GL000204.1,length=81310>
+##contig=<ID=GL000205.1,length=174588>
+##contig=<ID=GL000206.1,length=41001>
+##contig=<ID=GL000207.1,length=4262>
+##contig=<ID=GL000208.1,length=92689>
+##contig=<ID=GL000209.1,length=159169>
+##contig=<ID=GL000210.1,length=27682>
+##contig=<ID=GL000211.1,length=166566>
+##contig=<ID=GL000212.1,length=186858>
+##contig=<ID=GL000213.1,length=164239>
+##contig=<ID=GL000214.1,length=137718>
+##contig=<ID=GL000215.1,length=172545>
+##contig=<ID=GL000216.1,length=172294>
+##contig=<ID=GL000217.1,length=172149>
+##contig=<ID=GL000218.1,length=161147>
+##contig=<ID=GL000219.1,length=179198>
+##contig=<ID=GL000220.1,length=161802>
+##contig=<ID=GL000221.1,length=155397>
+##contig=<ID=GL000222.1,length=186861>
+##contig=<ID=GL000223.1,length=180455>
+##contig=<ID=GL000224.1,length=179693>
+##contig=<ID=GL000225.1,length=211173>
+##contig=<ID=GL000226.1,length=15008>
+##contig=<ID=GL000227.1,length=128374>
+##contig=<ID=GL000228.1,length=129120>
+##contig=<ID=GL000229.1,length=19913>
+##contig=<ID=GL000230.1,length=43691>
+##contig=<ID=GL000231.1,length=27386>
+##contig=<ID=GL000232.1,length=40652>
+##contig=<ID=GL000233.1,length=45941>
+##contig=<ID=GL000234.1,length=40531>
+##contig=<ID=GL000235.1,length=34474>
+##contig=<ID=GL000236.1,length=41934>
+##contig=<ID=GL000237.1,length=45867>
+##contig=<ID=GL000238.1,length=39939>
+##contig=<ID=GL000239.1,length=33824>
+##contig=<ID=GL000240.1,length=41933>
+##contig=<ID=GL000241.1,length=42152>
+##contig=<ID=GL000242.1,length=43523>
+##contig=<ID=GL000243.1,length=43341>
+##contig=<ID=GL000244.1,length=39929>
+##contig=<ID=GL000245.1,length=36651>
+##contig=<ID=GL000246.1,length=38154>
+##contig=<ID=GL000247.1,length=36422>
+##contig=<ID=GL000248.1,length=39786>
+##contig=<ID=GL000249.1,length=38502>
+##reference=file:///celgene/reference/genomes/Homo-sapiens/GRCh37.p12/WholeGenome/genome.fa
+##SnpEffVersion="4.3o (build 2017-05-21 09:40), by Pablo Cingolani"
+##SnpEffCmd="SnpEff  -cancer -lof GRCh37.75 /home/ubuntu/.synapseCache/379/15551379/MMRF_1016_1_BM_CD138pos_T1_KBS5U_L02999.MarkDuplicates.mdup...TEMP1.vcf "
+##INFO=<ID=ANN,Number=.,Type=String,Description="Functional annotations: 'Allele | Annotation | Annotation_Impact | Gene_Name | Gene_ID | Feature_Type | Feature_ID | Transcript_BioType | Rank | HGVS.c | HGVS.p | cDNA.pos / cDNA.length | CDS.pos / CDS.length | AA.pos / AA.length | Distance | ERRORS / WARNINGS / INFO' ">
+##INFO=<ID=LOF,Number=.,Type=String,Description="Predicted loss of function effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected'">
+##INFO=<ID=NMD,Number=.,Type=String,Description="Predicted nonsense mediated decay effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected'">
+##SnpSiftVersion="SnpSift 4.3o (build 2017-05-21 09:41), by Pablo Cingolani"
+##SnpSiftCmd=""
+##INFO=<ID=CDA,Number=0,Type=Flag,Description="Variation is interrogated in a clinical diagnostic assay">
+##INFO=<ID=OTH,Number=0,Type=Flag,Description="Has other variant with exactly the same set of mapped positions on NCBI refernce assembly.">
+##INFO=<ID=S3D,Number=0,Type=Flag,Description="Has 3D structure - SNP3D table">
+##INFO=<ID=WTD,Number=0,Type=Flag,Description="Is Withdrawn by submitter If one member ss is withdrawn by submitter, then this bit is set.  If all member ss' are withdrawn, then the rs is deleted to SNPHistory">
+##INFO=<ID=dbSNPBuildID,Number=1,Type=Integer,Description="First dbSNP Build for RS">
+##INFO=<ID=SLO,Number=0,Type=Flag,Description="Has SubmitterLinkOut - From SNP->SubSNP->Batch.link_out">
+##INFO=<ID=NSF,Number=0,Type=Flag,Description="Has non-synonymous frameshift A coding region variation where one allele in the set changes all downstream amino acids. FxnClass = 44">
+##INFO=<ID=R3,Number=0,Type=Flag,Description="In 3' gene region FxnCode = 13">
+##INFO=<ID=R5,Number=0,Type=Flag,Description="In 5' gene region FxnCode = 15">
+##INFO=<ID=NSN,Number=0,Type=Flag,Description="Has non-synonymous nonsense A coding region variation where one allele in the set changes to STOP codon (TER). FxnClass = 41">
+##INFO=<ID=NSM,Number=0,Type=Flag,Description="Has non-synonymous missense A coding region variation where one allele in the set changes protein peptide. FxnClass = 42">
+##INFO=<ID=G5A,Number=0,Type=Flag,Description=">5% minor allele frequency in each and all populations">
+##INFO=<ID=COMMON,Number=1,Type=Integer,Description="RS is a common SNP.  A common SNP is one that has at least one 1000Genomes population with a minor allele of frequency >= 1% and for which 2 or more founders contribute to that minor allele frequency.">
+##INFO=<ID=RS,Number=1,Type=Integer,Description="dbSNP ID (i.e. rs number)">
+##INFO=<ID=RV,Number=0,Type=Flag,Description="RS orientation is reversed">
+##INFO=<ID=TPA,Number=0,Type=Flag,Description="Provisional Third Party Annotation(TPA) (currently rs from PHARMGKB who will give phenotype data)">
+##INFO=<ID=CFL,Number=0,Type=Flag,Description="Has Assembly conflict. This is for weight 1 and 2 variant that maps to different chromosomes on different assemblies.">
+##INFO=<ID=GNO,Number=0,Type=Flag,Description="Genotypes available. The variant has individual genotype (in SubInd table).">
+##INFO=<ID=VLD,Number=0,Type=Flag,Description="Is Validated.  This bit is set if the variant has 2+ minor allele count based on frequency or genotype data.">
+##INFO=<ID=ASP,Number=0,Type=Flag,Description="Is Assembly specific. This is set if the variant only maps to one assembly">
+##INFO=<ID=ASS,Number=0,Type=Flag,Description="In acceptor splice site FxnCode = 73">
+##INFO=<ID=REF,Number=0,Type=Flag,Description="Has reference A coding region variation where one allele in the set is identical to the reference sequence. FxnCode = 8">
+##INFO=<ID=U3,Number=0,Type=Flag,Description="In 3' UTR Location is in an untranslated region (UTR). FxnCode = 53">
+##INFO=<ID=U5,Number=0,Type=Flag,Description="In 5' UTR Location is in an untranslated region (UTR). FxnCode = 55">
+##INFO=<ID=TOPMED,Number=.,Type=String,Description="An ordered, comma delimited list of allele frequencies based on TOPMed, starting with the reference allele followed by alternate alleles as ordered in the ALT column. The TOPMed minor allele is the second largest value in the list.">
+##INFO=<ID=WGT,Number=1,Type=Integer,Description="Weight, 00 - unmapped, 1 - weight 1, 2 - weight 2, 3 - weight 3 or more">
+##INFO=<ID=MTP,Number=0,Type=Flag,Description="Microattribution/third-party annotation(TPA:GWAS,PAGE)">
+##INFO=<ID=LSD,Number=0,Type=Flag,Description="Submitted from a locus-specific database">
+##INFO=<ID=NOC,Number=0,Type=Flag,Description="Contig allele not present in variant allele list. The reference sequence allele at the mapped position is not present in the variant allele list, adjusted for orientation.">
+##INFO=<ID=DSS,Number=0,Type=Flag,Description="In donor splice-site FxnCode = 75">
+##INFO=<ID=SYN,Number=0,Type=Flag,Description="Has synonymous A coding region variation where one allele in the set does not change the encoded amino acid. FxnCode = 3">
+##INFO=<ID=KGPhase3,Number=0,Type=Flag,Description="1000 Genome phase 3">
+##INFO=<ID=CAF,Number=.,Type=String,Description="An ordered, comma delimited list of allele frequencies based on 1000Genomes, starting with the reference allele followed by alternate alleles as ordered in the ALT column. Where a 1000Genomes alternate allele is not in the dbSNPs alternate allele set, the allele is added to the ALT column. The minor allele is the second largest value in the list, and was previuosly reported in VCF as the GMAF. This is the GMAF reported on the RefSNP and EntrezSNP pages and VariationReporter">
+##INFO=<ID=VC,Number=1,Type=String,Description="Variation Class">
+##INFO=<ID=MUT,Number=0,Type=Flag,Description="Is mutation (journal citation, explicit fact): a low frequency variation that is cited in journal and other reputable sources">
+##INFO=<ID=KGPhase1,Number=0,Type=Flag,Description="1000 Genome phase 1 (incl. June Interim phase 1)">
+##INFO=<ID=NOV,Number=0,Type=Flag,Description="Rs cluster has non-overlapping allele sets. True when rs set has more than 2 alleles from different submissions and these sets share no alleles in common.">
+##INFO=<ID=VP,Number=1,Type=String,Description="Variation Property.  Documentation is at ftp://ftp.ncbi.nlm.nih.gov/snp/specs/dbSNP_BitField_latest.pdf">
+##INFO=<ID=SAO,Number=1,Type=Integer,Description="Variant Allele Origin: 0 - unspecified, 1 - Germline, 2 - Somatic, 3 - Both">
+##INFO=<ID=GENEINFO,Number=1,Type=String,Description="Pairs each of gene symbol:gene id.  The gene symbol and id are delimited by a colon (:) and each pair is delimited by a vertical bar (|)">
+##INFO=<ID=INT,Number=0,Type=Flag,Description="In Intron FxnCode = 6">
+##INFO=<ID=G5,Number=0,Type=Flag,Description=">5% minor allele frequency in 1+ populations">
+##INFO=<ID=OM,Number=0,Type=Flag,Description="Has OMIM/OMIA">
+##INFO=<ID=PMC,Number=0,Type=Flag,Description="Links exist to PubMed Central article">
+##INFO=<ID=SSR,Number=1,Type=Integer,Description="Variant Suspect Reason Codes (may be more than one value added together) 0 - unspecified, 1 - Paralog, 2 - byEST, 4 - oldAlign, 8 - Para_EST, 16 - 1kg_failed, 1024 - other">
+##INFO=<ID=RSPOS,Number=1,Type=Integer,Description="Chr position reported in dbSNP">
+##INFO=<ID=HD,Number=0,Type=Flag,Description="Marker is on high density genotyping kit (50K density or greater).  The variant may have phenotype associations present in dbGaP.">
+##INFO=<ID=PM,Number=0,Type=Flag,Description="Variant is Precious(Clinical,Pubmed Cited)">
+##INFO=<ID=CDS,Number=1,Type=String,Description="CDS annotation">
+##INFO=<ID=AA,Number=1,Type=String,Description="Peptide annotation">
+##INFO=<ID=GENE,Number=1,Type=String,Description="Gene name">
+##INFO=<ID=CNT,Number=1,Type=Integer,Description="How many samples have this mutation">
+##INFO=<ID=STRAND,Number=1,Type=String,Description="Gene strand">
+##INFO=<ID=CLNSIG,Number=.,Type=String,Description="Variant Clinical Significance, 0 - Uncertain significance, 1 - not provided, 2 - Benign, 3 - Likely benign, 4 - Likely pathogenic, 5 - Pathogenic, 6 - drug response, 7 - histocompatibility, 255 - other">
+##INFO=<ID=VARTYPE,Number=A,Type=String,Description="Comma separated list of variant types. One per allele">
+##INFO=<ID=SNP,Number=A,Type=Flag,Description="Variant is a SNP">
+##INFO=<ID=MNP,Number=A,Type=Flag,Description="Variant is a MNP">
+##INFO=<ID=INS,Number=A,Type=Flag,Description="Variant is a INS">
+##INFO=<ID=DEL,Number=A,Type=Flag,Description="Variant is a DEL">
+##INFO=<ID=MIXED,Number=A,Type=Flag,Description="Variant is a MIXED">
+##INFO=<ID=HOM,Number=A,Type=Flag,Description="Variant is homozygous">
+##INFO=<ID=HET,Number=A,Type=Flag,Description="Variant is heterozygous">
+##INFO=<ID=dbNSFP_PROVEAN_score,Number=A,Type=Float,Description="Field 'PROVEAN_score' from dbNSFP">
+##INFO=<ID=dbNSFP_SiPhy_29way_logOdds,Number=A,Type=Float,Description="Field 'SiPhy_29way_logOdds' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_NFE_AF,Number=A,Type=Integer,Description="Field 'ExAC_NFE_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_SAS_AF,Number=A,Type=Integer,Description="Field 'ExAC_SAS_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_GERP___RS,Number=A,Type=Float,Description="Field 'GERP++_RS' from dbNSFP">
+##INFO=<ID=dbNSFP_GERP___NR,Number=A,Type=Float,Description="Field 'GERP++_NR' from dbNSFP">
+##INFO=<ID=dbNSFP_phastCons100way_vertebrate_rankscore,Number=A,Type=Float,Description="Field 'phastCons100way_vertebrate_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AMR_AF,Number=A,Type=String,Description="Field '1000Gp1_AMR_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_SAS_AC,Number=A,Type=Integer,Description="Field 'ExAC_SAS_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AMR_AC,Number=A,Type=String,Description="Field '1000Gp1_AMR_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_PROVEAN_converted_rankscore,Number=A,Type=Float,Description="Field 'PROVEAN_converted_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_ARIC5606_AA_AF,Number=A,Type=String,Description="Field 'ARIC5606_AA_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ARIC5606_AA_AC,Number=A,Type=String,Description="Field 'ARIC5606_AA_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaSVM_pred,Number=A,Type=Character,Description="Field 'MetaSVM_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_SiPhy_29way_logOdds_rankscore,Number=A,Type=Float,Description="Field 'SiPhy_29way_logOdds_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_FATHMM_pred,Number=A,Type=Character,Description="Field 'FATHMM_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_Reliability_index,Number=A,Type=Integer,Description="Field 'Reliability_index' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AFR_AF,Number=A,Type=Float,Description="Field 'ExAC_AFR_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AFR_AC,Number=A,Type=Integer,Description="Field 'ExAC_AFR_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_ARIC5606_EA_AF,Number=A,Type=String,Description="Field 'ARIC5606_EA_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_GERP___RS_rankscore,Number=A,Type=Float,Description="Field 'GERP++_RS_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_SIFT_score,Number=A,Type=Float,Description="Field 'SIFT_score' from dbNSFP">
+##INFO=<ID=dbNSFP_ARIC5606_EA_AC,Number=A,Type=String,Description="Field 'ARIC5606_EA_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaLR_score,Number=A,Type=Float,Description="Field 'MetaLR_score' from dbNSFP">
+##INFO=<ID=dbNSFP_phyloP100way_vertebrate_rankscore,Number=A,Type=Float,Description="Field 'phyloP100way_vertebrate_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AC,Number=A,Type=String,Description="Field '1000Gp1_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AF,Number=A,Type=String,Description="Field '1000Gp1_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_FIN_AC,Number=A,Type=Integer,Description="Field 'ExAC_FIN_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_FIN_AF,Number=A,Type=Float,Description="Field 'ExAC_FIN_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaSVM_rankscore,Number=A,Type=Float,Description="Field 'MetaSVM_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AFR_AC,Number=A,Type=String,Description="Field '1000Gp1_AFR_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_FATHMM_score,Number=A,Type=Float,Description="Field 'FATHMM_score' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_AFR_AF,Number=A,Type=String,Description="Field '1000Gp1_AFR_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaLR_rankscore,Number=A,Type=Float,Description="Field 'MetaLR_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AMR_AF,Number=A,Type=Integer,Description="Field 'ExAC_AMR_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_MutationTaster_pred,Number=A,Type=Character,Description="Field 'MutationTaster_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaLR_pred,Number=A,Type=Character,Description="Field 'MetaLR_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AMR_AC,Number=A,Type=Integer,Description="Field 'ExAC_AMR_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_NFE_AC,Number=A,Type=Integer,Description="Field 'ExAC_NFE_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_LRT_score,Number=A,Type=Float,Description="Field 'LRT_score' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_EAS_AC,Number=A,Type=Integer,Description="Field 'ExAC_EAS_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_EAS_AF,Number=A,Type=Integer,Description="Field 'ExAC_EAS_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ESP6500_EA_AF,Number=A,Type=String,Description="Field 'ESP6500_EA_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_MutationAssessor_score,Number=A,Type=Float,Description="Field 'MutationAssessor_score' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_Adj_AC,Number=A,Type=Integer,Description="Field 'ExAC_Adj_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_Adj_AF,Number=A,Type=Float,Description="Field 'ExAC_Adj_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_SIFT_converted_rankscore,Number=A,Type=Float,Description="Field 'SIFT_converted_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_MutationTaster_converted_rankscore,Number=A,Type=Float,Description="Field 'MutationTaster_converted_rankscore' from dbNSFP">
+##INFO=<ID=dbNSFP_phyloP100way_vertebrate,Number=A,Type=Float,Description="Field 'phyloP100way_vertebrate' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AF,Number=A,Type=Float,Description="Field 'ExAC_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ExAC_AC,Number=A,Type=Integer,Description="Field 'ExAC_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_LRT_pred,Number=A,Type=Character,Description="Field 'LRT_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_PROVEAN_pred,Number=A,Type=Character,Description="Field 'PROVEAN_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_phastCons100way_vertebrate,Number=A,Type=Float,Description="Field 'phastCons100way_vertebrate' from dbNSFP">
+##INFO=<ID=dbNSFP_MetaSVM_score,Number=A,Type=Float,Description="Field 'MetaSVM_score' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_ASN_AF,Number=A,Type=String,Description="Field '1000Gp1_ASN_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_ASN_AC,Number=A,Type=String,Description="Field '1000Gp1_ASN_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_EUR_AC,Number=A,Type=String,Description="Field '1000Gp1_EUR_AC' from dbNSFP">
+##INFO=<ID=dbNSFP_MutationTaster_score,Number=A,Type=Float,Description="Field 'MutationTaster_score' from dbNSFP">
+##INFO=<ID=dbNSFP_MutationAssessor_pred,Number=A,Type=Character,Description="Field 'MutationAssessor_pred' from dbNSFP">
+##INFO=<ID=dbNSFP_1000Gp1_EUR_AF,Number=A,Type=String,Description="Field '1000Gp1_EUR_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_ESP6500_AA_AF,Number=A,Type=String,Description="Field 'ESP6500_AA_AF' from dbNSFP">
+##INFO=<ID=dbNSFP_SIFT_pred,Number=A,Type=Character,Description="Field 'SIFT_pred' from dbNSFP">
+##INFO=<ID=GWASCAT_TRAIT,Number=.,Type=String,Description="GWAS catalog: Associated trait">
+##INFO=<ID=GWASCAT_P_VALUE,Number=.,Type=Float,Description="GWAS catalog: p-value">
+##INFO=<ID=GWASCAT_OR_BETA,Number=.,Type=Float,Description="GWAS catalog: OR or Beta">
+##INFO=<ID=GWASCAT_REPORTED_GENE,Number=.,Type=String,Description="GWAS catalog: Reported gene">
+##INFO=<ID=GWASCAT_PUBMED_ID,Number=.,Type=String,Description="GWAS catalog: Original paper's Pubmed ID">
+##INFO=<ID=MSigDb,Number=.,Type=String,Description="Gene set from MSigDB database (GSEA)">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	TUMOR	NORMAL
+chr1	3348577	rs755588843	C	T	.	PASS	DB;ECNT=1;HCNT=1;MAX_ED=.;MIN_ED=.;NLOD=12.59;TLOD=11.39;ANN=T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000270722|protein_coding|16/17|c.3569C>T|p.Pro1190Leu|3618/8690|3569/3831|1190/1276||,T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000378398|protein_coding|17/18|c.3569C>T|p.Pro1190Leu|3651/8721|3569/3831|1190/1276||,T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000441472|protein_coding|16/17|c.3566C>T|p.Pro1189Leu|3648/8718|3566/3828|1189/1275||,T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000442529|protein_coding|16/17|c.3566C>T|p.Pro1189Leu|3648/8661|3566/3771|1189/1256||,T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000378391|protein_coding|16/17|c.3569C>T|p.Pro1190Leu|3632/5447|3569/3774|1190/1257||,T|missense_variant|MODERATE|PRDM16|ENSG00000142611|transcript|ENST00000509860|protein_coding|12/13|c.2993C>T|p.Pro998Leu|2993/3737|2993/3255|998/1084||WARNING_TRANSCRIPT_NO_START_CODON,T|intron_variant|MODIFIER|PRDM16|ENSG00000142611|transcript|ENST00000511072|protein_coding|15/15|c.3524+905C>T||||||,T|intron_variant|MODIFIER|PRDM16|ENSG00000142611|transcript|ENST00000514189|protein_coding|15/15|c.3521+905C>T||||||,T|intron_variant|MODIFIER|PRDM16|ENSG00000142611|transcript|ENST00000378389|processed_transcript|4/4|n.723+905C>T||||||,T|non_coding_transcript_exon_variant|MODIFIER|PRDM16|ENSG00000142611|transcript|ENST00000512462|processed_transcript|15/16|n.3347C>T||||||;ASP;GENEINFO=PRDM16:63976;INT;NSM;REF;RS=755588843;RSPOS=3348577;SAO=0;SSR=0;VC=SNV;VP=0x050000080a05000002000100;WGT=1;dbSNPBuildID=nan;SNP;VARTYPE=SNP;dbNSFP_1000Gp1_AC=.;dbNSFP_1000Gp1_AF=.;dbNSFP_1000Gp1_AFR_AC=.;dbNSFP_1000Gp1_AFR_AF=.;dbNSFP_1000Gp1_AMR_AC=.;dbNSFP_1000Gp1_AMR_AF=.;dbNSFP_1000Gp1_ASN_AC=.;dbNSFP_1000Gp1_ASN_AF=.;dbNSFP_1000Gp1_EUR_AC=.;dbNSFP_1000Gp1_EUR_AF=.;dbNSFP_ARIC5606_AA_AC=.;dbNSFP_ARIC5606_AA_AF=.;dbNSFP_ARIC5606_EA_AC=.;dbNSFP_ARIC5606_EA_AF=.;dbNSFP_ESP6500_AA_AF=.;dbNSFP_ESP6500_EA_AF=.;dbNSFP_ExAC_AC=1;dbNSFP_ExAC_AF=8.267e-06;dbNSFP_ExAC_AFR_AC=1;dbNSFP_ExAC_AFR_AF=1.023e-04;dbNSFP_ExAC_AMR_AC=0;dbNSFP_ExAC_AMR_AF=0;dbNSFP_ExAC_Adj_AC=1;dbNSFP_ExAC_Adj_AF=8.298e-06;dbNSFP_ExAC_EAS_AC=0;dbNSFP_ExAC_EAS_AF=0;dbNSFP_ExAC_FIN_AC=0;dbNSFP_ExAC_FIN_AF=0;dbNSFP_ExAC_NFE_AC=0;dbNSFP_ExAC_NFE_AF=0;dbNSFP_ExAC_SAS_AC=0;dbNSFP_ExAC_SAS_AF=0;dbNSFP_FATHMM_pred=T;dbNSFP_FATHMM_score=3.41,3.42,3.26,3.38;dbNSFP_GERP___NR=5.11;dbNSFP_GERP___RS=3.23;dbNSFP_GERP___RS_rankscore=0.37069;dbNSFP_LRT_pred=U;dbNSFP_LRT_score=0.000136;dbNSFP_MetaLR_pred=T;dbNSFP_MetaLR_rankscore=0.13415;dbNSFP_MetaLR_score=0.0325;dbNSFP_MetaSVM_pred=T;dbNSFP_MetaSVM_rankscore=0.03025;dbNSFP_MetaSVM_score=-1.1081;dbNSFP_MutationAssessor_pred=M;dbNSFP_MutationAssessor_score=2.08;dbNSFP_MutationTaster_converted_rankscore=0.70825;dbNSFP_MutationTaster_pred=D;dbNSFP_MutationTaster_score=1.000;dbNSFP_PROVEAN_converted_rankscore=0.59623;dbNSFP_PROVEAN_pred=D;dbNSFP_PROVEAN_score=-2.84,-2.78;dbNSFP_Reliability_index=nan;dbNSFP_SIFT_converted_rankscore=0.42532;dbNSFP_SIFT_pred=D,T;dbNSFP_SIFT_score=0.035,0.057,0.042,0.04,0.058;dbNSFP_SiPhy_29way_logOdds=10.9119;dbNSFP_SiPhy_29way_logOdds_rankscore=0.47114;dbNSFP_phastCons100way_vertebrate=1.000000;dbNSFP_phastCons100way_vertebrate_rankscore=nan;dbNSFP_phyloP100way_vertebrate=5.661000;dbNSFP_phyloP100way_vertebrate_rankscore=0.68025;MSigDb=AAANWWTGC_UNKNOWN,AAAYWAACM_HFH4_01,AP2ALPHA_01,AP2GAMMA_01,AP2_Q3,AP2_Q6_01,BRUINS_UVC_RESPONSE_VIA_TP53_GROUP_A,CACCCBINDINGFACTOR_Q6,CCGNMNNTNACG_UNKNOWN,CEBPB_01,CEBP_Q2,COUP_01,COUP_DR1_Q6,DR1_Q3,E2F1_Q3_01,E2F_Q2,ETF_Q6,GO_ACTIVATING_TRANSCRIPTION_FACTOR_BINDING,GO_BROWN_FAT_CELL_DIFFERENTIATION,GO_CHROMATIN_MODIFICATION,GO_CHROMATIN_ORGANIZATION,GO_CHROMOSOME_ORGANIZATION,GO_COVALENT_CHROMATIN_MODIFICATION,GO_FAT_CELL_DIFFERENTIATION,GO_HISTONE_LYSINE_N_METHYLTRANSFERASE_ACTIVITY,GO_HISTONE_METHYLATION,GO_HISTONE_METHYLTRANSFERASE_ACTIVITY,GO_LYSINE_N_METHYLTRANSFERASE_ACTIVITY,GO_MACROMOLECULE_METHYLATION,GO_MAINTENANCE_OF_CELL_NUMBER,GO_METHYLATION,GO_NEGATIVE_REGULATION_OF_CELLULAR_RESPONSE_TO_GROWTH_FACTOR_STIMULUS,GO_NEGATIVE_REGULATION_OF_CELL_COMMUNICATION,GO_NEGATIVE_REGULATION_OF_CELL_DIFFERENTIATION,GO_NEGATIVE_REGULATION_OF_DEVELOPMENTAL_PROCESS,GO_NEGATIVE_REGULATION_OF_GENE_EXPRESSION,GO_NEGATIVE_REGULATION_OF_HEMOPOIESIS,GO_NEGATIVE_REGULATION_OF_IMMUNE_SYSTEM_PROCESS,GO_NEGATIVE_REGULATION_OF_LEUKOCYTE_DIFFERENTIATION,GO_NEGATIVE_REGULATION_OF_MULTICELLULAR_ORGANISMAL_PROCESS,GO_NEGATIVE_REGULATION_OF_MYELOID_CELL_DIFFERENTIATION,GO_NEGATIVE_REGULATION_OF_MYELOID_LEUKOCYTE_DIFFERENTIATION,GO_NEGATIVE_REGULATION_OF_NITROGEN_COMPOUND_METABOLIC_PROCESS,GO_NEGATIVE_REGULATION_OF_RESPONSE_TO_STIMULUS,GO_NEGATIVE_REGULATION_OF_TRANSCRIPTION_FROM_RNA_POLYMERASE_II_PROMOTER,GO_NEGATIVE_REGULATION_OF_TRANSFORMING_GROWTH_FACTOR_BETA_RECEPTOR_SIGNALING_PATHWAY,GO_NEGATIVE_REGULATION_OF_TRANSMEMBRANE_RECEPTOR_PROTEIN_SERINE_THREONINE_KINASE_SIGNALING_PATHWAY,GO_NEUROGENESIS,GO_N_METHYLTRANSFERASE_ACTIVITY,GO_PALATE_DEVELOPMENT,GO_PEPTIDYL_AMINO_ACID_MODIFICATION,GO_PEPTIDYL_LYSINE_METHYLATION,GO_PEPTIDYL_LYSINE_MODIFICATION,GO_POSITIVE_REGULATION_OF_BIOSYNTHETIC_PROCESS,GO_POSITIVE_REGULATION_OF_CELL_DIFFERENTIATION,GO_POSITIVE_REGULATION_OF_DEVELOPMENTAL_PROCESS,GO_POSITIVE_REGULATION_OF_FAT_CELL_DIFFERENTIATION,GO_POSITIVE_REGULATION_OF_GENE_EXPRESSION,GO_PROTEIN_ALKYLATION,GO_PROTEIN_METHYLTRANSFERASE_ACTIVITY,GO_REGULATION_OF_BROWN_FAT_CELL_DIFFERENTIATION,GO_REGULATION_OF_CELLULAR_RESPIRATION,GO_REGULATION_OF_CELLULAR_RESPONSE_TO_GROWTH_FACTOR_STIMULUS,GO_REGULATION_OF_CELLULAR_RESPONSE_TO_TRANSFORMING_GROWTH_FACTOR_BETA_STIMULUS,GO_REGULATION_OF_CELL_DIFFERENTIATION,GO_REGULATION_OF_FAT_CELL_DIFFERENTIATION,GO_REGULATION_OF_GENERATION_OF_PRECURSOR_METABOLITES_AND_ENERGY,GO_REGULATION_OF_GRANULOCYTE_DIFFERENTIATION,GO_REGULATION_OF_HEMOPOIESIS,GO_REGULATION_OF_IMMUNE_SYSTEM_PROCESS,GO_REGULATION_OF_LEUKOCYTE_DIFFERENTIATION,GO_REGULATION_OF_MULTICELLULAR_ORGANISMAL_DEVELOPMENT,GO_REGULATION_OF_MYELOID_CELL_DIFFERENTIATION,GO_REGULATION_OF_MYELOID_LEUKOCYTE_DIFFERENTIATION,GO_REGULATION_OF_TRANSCRIPTION_FROM_RNA_POLYMERASE_II_PROMOTER,GO_REGULATION_OF_TRANSMEMBRANE_RECEPTOR_PROTEIN_SERINE_THREONINE_KINASE_SIGNALING_PATHWAY,GO_SENSORY_ORGAN_DEVELOPMENT,GO_SEQUENCE_SPECIFIC_DNA_BINDING,GO_SMAD_BINDING,GO_SOMATIC_STEM_CELL_POPULATION_MAINTENANCE,GO_S_ADENOSYLMETHIONINE_DEPENDENT_METHYLTRANSFERASE_ACTIVITY,GO_TONGUE_DEVELOPMENT,GO_TRANSCRIPTIONAL_REPRESSOR_COMPLEX,GO_TRANSCRIPTION_COACTIVATOR_ACTIVITY,GO_TRANSCRIPTION_FACTOR_ACTIVITY_PROTEIN_BINDING,GO_TRANSCRIPTION_FACTOR_BINDING,GO_TRANSFERASE_ACTIVITY_TRANSFERRING_ONE_CARBON_GROUPS,GO_WHITE_FAT_CELL_DIFFERENTIATION,GRESHOCK_CANCER_COPY_NUMBER_UP,GSE10325_CD4_TCELL_VS_LUPUS_CD4_TCELL_UP,GSE11961_MARGINAL_ZONE_BCELL_VS_GERMINAL_CENTER_BCELL_DAY7_UP,GSE11961_MARGINAL_ZONE_BCELL_VS_MEMORY_BCELL_DAY7_UP,GSE12845_IGD_NEG_BLOOD_VS_PRE_GC_TONSIL_BCELL_UP,GSE13173_UNTREATED_VS_IL12_TREATED_ACT_CD8_TCELL_UP,GSE13485_CTRL_VS_DAY21_YF17D_VACCINE_PBMC_DN,GSE13485_DAY3_VS_DAY21_YF17D_VACCINE_PBMC_DN,GSE13485_DAY7_VS_DAY21_YF17D_VACCINE_PBMC_DN,GSE13762_CTRL_VS_125_VITAMIND_DAY5_DC_DN,GSE19888_ADENOSINE_A3R_ACT_VS_TCELL_MEMBRANES_ACT_AND_A3R_INH_PRETREAT_IN_MAST_CELL_UP,GSE19888_ADENOSINE_A3R_INH_VS_ACT_IN_MAST_CELL_DN,GSE19888_ADENOSINE_A3R_INH_VS_INH_PRETREAT_AND_ACT_WITH_TCELL_MEMBRANES_MAST_CELL_DN,GSE21670_UNTREATED_VS_TGFB_TREATED_CD4_TCELL_DN,GSE21774_CD62L_POS_CD56_BRIGHT_VS_CD62L_NEG_CD56_DIM_NK_CELL_DN,GSE21774_CD62L_POS_CD56_DIM_VS_CD62L_NEG_CD56_DIM_NK_CELL_UP,GSE25087_TREG_VS_TCONV_FETUS_DN,GSE25088_CTRL_VS_IL4_STIM_MACROPHAGE_DN,GSE2770_IL12_ACT_VS_ACT_CD4_TCELL_48H_DN,GSE2770_IL12_VS_TGFB_AND_IL12_TREATED_ACT_CD4_TCELL_6H_UP,GSE2770_UNTREATED_VS_IL4_TREATED_ACT_CD4_TCELL_2H_DN,GSE2770_UNTREATED_VS_TGFB_AND_IL12_TREATED_ACT_CD4_TCELL_2H_UP,GSE30083_SP2_VS_SP3_THYMOCYTE_UP,GSE32423_CTRL_VS_IL7_MEMORY_CD8_TCELL_DN,GSE37534_GW1929_VS_PIOGLITAZONE_TREATED_CD4_TCELL_PPARG1_FOXP3_TRANSDUCED_UP,GSE40274_FOXP3_VS_FOXP3_AND_LEF1_TRANSDUCED_ACTIVATED_CD4_TCELL_UP,GSE41176_WT_VS_TAK1_KO_ANTI_IGM_STIM_BCELL_1H_DN,GSE41176_WT_VS_TAK1_KO_ANTI_IGM_STIM_BCELL_1H_UP,GSE41176_WT_VS_TAK1_KO_UNSTIM_BCELL_DN,GSE41176_WT_VS_TAK1_KO_UNSTIM_BCELL_UP,GSE42088_UNINF_VS_LEISHMANIA_INF_DC_4H_DN,GSE45365_CD8A_DC_VS_CD11B_DC_IFNAR_KO_UP,HNF4_01,HNF4_01_B,HNF4_DR1_Q3,ICSBP_Q6,IRF1_01,IRF2_01,IRF7_01,IRF_Q6,ISRE_01,IVANOVA_HEMATOPOIESIS_STEM_CELL_LONG_TERM,JAATINEN_HEMATOPOIETIC_STEM_CELL_UP,MARTENS_TRETINOIN_RESPONSE_UP,MAZ_Q6,MEISSNER_BRAIN_HCP_WITH_H3K4ME3_AND_H3K27ME3,MEISSNER_NPC_HCP_WITH_H3K4ME2_AND_H3K27ME3,MIKKELSEN_NPC_HCP_WITH_H3K27ME3,MYB_Q3,MYOD_Q6_01,PPARA_01,PPAR_DR1_Q2,RATTENBACHER_BOUND_BY_CELF1,RNTCANNRNNYNATTW_UNKNOWN,RRAGTTGT_UNKNOWN,SHEN_SMARCA2_TARGETS_DN,TATA_C,TEF1_Q6,TFIIA_Q6,TGANTCA_AP1_C,TGCGCANK_UNKNOWN,TTTNNANAGCYR_UNKNOWN,VECCHI_GASTRIC_CANCER_EARLY_DN,YAUCH_HEDGEHOG_SIGNALING_PARACRINE_DN,YRTCANNRCGC_UNKNOWN,ZF5_01,chr1p36	GT:AD:AF:ALT_F1R2:ALT_F2R1:FOXOG:QSS:REF_F1R2:REF_F2R1	0/1:28,5:0.133:3:2:0.400:961,184:10:18	0/0:44,0:0.00:0:0:.:1505,0:16:28

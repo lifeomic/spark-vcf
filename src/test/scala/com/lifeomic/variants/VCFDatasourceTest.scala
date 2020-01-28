@@ -158,4 +158,17 @@ class VCFDatasourceTest extends AssertionsForJUnit {
         Assert.assertEquals(third.getAs[String]("sampleid"), "NA00003")
     }
 
+    @Test
+    def testInvalidNumberFormat(): Unit = {
+        val y = spark.read
+            .format("com.lifeomic.variants")
+            .option("use.info.type", "true")
+            .load("src/test/resources/invalid-number-format.vcf")
+
+        val first = y.first()
+        Assert.assertTrue(first.getAs[mutable.WrappedArray[Float]]("info_dbnsfp_phastcons100way_vertebrate_rankscore")(0) == 0.0f)
+        Assert.assertTrue(first.getAs[mutable.WrappedArray[Int]]("info_dbnsfp_exac_sas_ac")(0) == 0)
+        Assert.assertEquals(0, first.getAs[Int]("info_dbsnpbuildid"))
+    }
+
 }
